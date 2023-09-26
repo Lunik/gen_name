@@ -1,0 +1,25 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  install:
+    run: once
+    desc: Install dependencies
+    cmds:
+      - python3 -m venv venv
+      - venv/bin/pip3 install pytest pylint
+
+  test:
+    deps: [install]
+    desc: Run tests
+    env:
+      PYTHONPATH: '.'
+    cmds:
+      - venv/bin/pytest tests/*
+
+  lint:
+    deps: [install]
+    desc: Run linters
+    cmds:
+      - venv/bin/pylint gen.py

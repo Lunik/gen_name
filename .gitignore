@@ -1,0 +1,8 @@
+*.pyc
+
+.DS_Store
+
+.task
+.pytest_cache
+
+venv
